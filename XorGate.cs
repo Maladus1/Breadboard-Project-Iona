@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class XorGate : LogicGate
 {
+    public void FixedUpdate()
+    {
+        computeXor();
+    }
     public void computeXor()
     {
-        if (inputs[0].GetOuput() == inputs[1].GetOuput()) { output = false; }
-        else { output = true; }
+        if (inputs[0].value == inputs[1].value) { outValue = false; }
+        else { outValue = true; }
+
+        sendOutput();
     }
 }

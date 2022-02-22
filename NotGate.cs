@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class NotGate : LogicGate
 {
+    public void FixedUpdate()
+    {
+        computeNot();
+    }
     public void computeNot()
     {
-        if (inputs[0].GetOuput()) { output = true; }
-        else { output = false; }
+        if (inputs[0].value) { outValue = true; }
+        else { outValue = false; }
+
+        sendOutput();
     }
 }

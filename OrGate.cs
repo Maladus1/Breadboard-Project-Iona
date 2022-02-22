@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class OrGate : LogicGate
 {
-    // Start is called before the first frame update
+    public void FixedUpdate()
+    {
+        computeOr();
+    }
     public void computeOr()
     {
-        if (!inputs[0].GetOuput() && !inputs[1].GetOuput()) { output = false; }
-        else if (inputs[0].GetOuput() && !inputs[1].GetOuput()) { output = true; }
-        else if (!inputs[0].GetOuput() && inputs[1].GetOuput()) { output = true; }
-        else { output = true; }
+        if (!inputs[0].value && !inputs[1].value) { outValue = false; }
+        else if (inputs[0].value && !inputs[1].value) { outValue = true; }
+        else if (!inputs[0].value && inputs[1].value) { outValue = true; }
+        else { outValue = true; }
+
+        sendOutput();
     }
 }

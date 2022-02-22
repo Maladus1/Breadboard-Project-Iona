@@ -4,29 +4,12 @@ using UnityEngine;
 
 public class Wire : MonoBehaviour
 {
-    public Chip front;
-    public Chip end;
+    public bool value;
     private int i;
 
-    public Chip GetFront() { return front; }
-
-    public Chip GetEnd() { return end; }
-
-    public bool CheckConnection(int i)
+    void Update()
     {
-        if (i == 0) 
-        {
-            if (GetFront() != null) { return true; }
-            else { return false; }
-        }
-        else if (i == 1)
-        {
-            if (GetEnd() != null) { return true; }
-            else { return false; }
-        }
-        else
-        {
-            return false;
-        }
+        if (value == true) { this.GetComponent<LineRenderer>().material.color = new Color(0f, 1f, 0f, 0f); }
+        else if (value == false) { this.GetComponent<LineRenderer>().material.color = new Color(1f, 0f, 0f, 0f); }
     }
 }

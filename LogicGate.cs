@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class LogicGate: MonoBehaviour
 {
-    public List<LogicGate> inputs;
-    public bool output;
+    public List<Wire> inputs;
+    public List<Wire> outputs;
+    public bool outValue;
 
-    void Start()
+    public void Update() //used for testing
     {
-        //there is only one input for a basic logic gate
-        LogicGate temp = inputs[0];
-        inputs = new List<LogicGate>(1);
-        inputs.Add(temp);
+        if (outValue) { this.GetComponent<Renderer>().material.color = new Color(0f, 1f, 0f, 0f); }
+        else { this.GetComponent<Renderer>().material.color = new Color(1f, 0f, 0f, 0f); }
     }
 
-    public bool GetOuput()
+    public bool GetValue()
     {
-        if(!inputs[0].output) { output = false; }
-        else { output = true; }
-        return output;
+        if(!inputs[0].value) { outValue = false; }
+        else { outValue = true; }
+        return outValue;
     }
 
-    public List<LogicGate> GetInput() { return inputs; }
-    
+    public List<Wire> GetInputs() { return inputs; }
+
+    public List<Wire> GetOutputs() { return outputs; }
+
+    public void sendOutput()
+    {
+        if (outputs != null)
+        {
+            for (int i = 0; i < outputs.Count; i++)
+            {
+                outputs[i].value = outValue;
+            }
+        }
+    }
+
 
 }
