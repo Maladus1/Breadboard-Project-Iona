@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class Chip : MonoBehaviour
 {
-    public List<LogicGate> inputs;
-    public List<bool> outputs;
+    public List<Wire> chipIns;
+    public List<Wire> chipOuts;
     public List<LogicGate> gates;
 
-    public LogicGate GetInput(int i) { return inputs[i]; }
+    public void assignSingleInput(LogicGate gate, Wire in0) { gate.inputs[0] = in0; }
 
-    public bool GetOutput(int i) { return outputs[i]; }
+    public void assignDuoInputs(LogicGate gate, Wire in0, Wire in1)
+    {
+        gate.inputs[0] = in0;
+        gate.inputs[1] = in1;    
+    }
+
+    public void assignTripleInputs(LogicGate gate, Wire in0, Wire in1, Wire in2)
+    {
+        gate.inputs[0] = in0;
+        gate.inputs[1] = in1;
+        gate.inputs[2] = in2;
+    }
 
 }

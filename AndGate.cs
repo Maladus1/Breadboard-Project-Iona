@@ -6,12 +6,12 @@ public class AndGate : LogicGate
 {
     public void FixedUpdate()
     {
-        computeAnd();
+        computeAnd(inputs[0], inputs[1], outputs[0]);
     }
-    public void computeAnd()
+    public void computeAnd(Wire in0, Wire in1, Wire out0)
     {
-        if (inputs[0].value && inputs[1].value) { outValue = true; }
-        else { outValue = false; }
+        if (in0.value && in1.value) { out0.value = true; }
+        else { out0.value = false; }
 
         sendOutput();
     }

@@ -6,12 +6,12 @@ public class NotGate : LogicGate
 {
     public void FixedUpdate()
     {
-        computeNot();
+        computeNot(inputs[0], outputs[0]);
     }
-    public void computeNot()
+    public void computeNot(Wire in0, Wire out0)
     {
-        if (inputs[0].value) { outValue = true; }
-        else { outValue = false; }
+        if (!in0.value) { out0.value = true; }
+        else { out0.value = false; }
 
         sendOutput();
     }

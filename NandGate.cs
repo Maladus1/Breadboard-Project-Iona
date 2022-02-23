@@ -6,12 +6,13 @@ public class NandGate : LogicGate
 {
     public void FixedUpdate()
     {
-        computeNand();
+        computeNand(inputs[0], inputs[1], outputs[0]);
     }
-    public void computeNand()
+
+    public void computeNand(Wire in0, Wire in1, Wire out0)
     {
-        if (inputs[0].value && inputs[1].value ) { outValue = false; }
-        else { outValue = true; }
+        if (in0.value && in1.value ) { out0.value = false; }
+        else { out0.value = true; }
 
         sendOutput();
     }

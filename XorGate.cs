@@ -6,12 +6,12 @@ public class XorGate : LogicGate
 {
     public void FixedUpdate()
     {
-        computeXor();
+        computeXor(inputs[0], inputs[1], outputs[0]);
     }
-    public void computeXor()
+    public void computeXor(Wire in0, Wire in1, Wire out0)
     {
-        if (inputs[0].value == inputs[1].value) { outValue = false; }
-        else { outValue = true; }
+        if (in0.value == in1.value) { outValue = false; }
+        else { out0.value = true; }
 
         sendOutput();
     }
